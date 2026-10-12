@@ -1,3 +1,18 @@
+class Solution:
+    def maxSum(self, nums: list[int], m: int, k: int) ->int:
+        ans = 0
+        win_sum = sum(nums[ : k])
+        if len(set(nums[ :k])) >= m:
+            ans = win_sum
+        for i in range(k, len(nums)):
+            win_sum += nums[i] - nums[i - k]
+            if len(set(nums[ i - k + 1: i + 1 ])) >= m and win_sum > ans:
+                ans = win_sum
+        return ans
+
+
+
+
 '''My solution——it's slow
 class Solution:
     def maxSum(self, nums: List[int], m: int, k: int) -> int:
@@ -14,7 +29,7 @@ class Solution:
         return count
     
 
-'''
+
 from collections import Counter
 from typing import List
 
@@ -51,4 +66,6 @@ class Solution:
         max_sum = max(max_sum, current_sum)
 
     return max_sum
+
+'''
    
