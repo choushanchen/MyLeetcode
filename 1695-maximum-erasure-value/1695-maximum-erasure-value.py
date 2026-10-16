@@ -1,19 +1,69 @@
 from collections import Counter
 class Solution:
     def maximumUniqueSubarray(self, nums:list[int]) -> int:
-        ans = 0
-        sum_win = 0
-        count = Counter()
+        cnt = Counter()
         left = 0
+        s = 0
+        ans = 0
         for right in range(len(nums)):
-            count[nums[right]] += 1
-            sum_win += nums[right]
-            while count[nums[right]] > 1:
-                count[nums[left]] -= 1
-                sum_win -= nums[left]
+            r = nums[right]
+            cnt[r] += 1
+            s += r
+            while cnt[r] == 2:
+                l = nums[left]
+                cnt[l] -= 1
+                s -= l
                 left += 1
-            ans = max(ans, sum_win)
+            ans = max(ans, s)
         return ans
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from collections import Counter
+# class Solution:
+#     def maximumUniqueSubarray(self, nums:list[int]) -> int:
+#         ans = 0
+#         sum_win = 0
+#         count = Counter()
+#         left = 0
+#         for right in range(len(nums)):
+#             count[nums[right]] += 1
+#             sum_win += nums[right]
+#             while count[nums[right]] > 1:
+#                 count[nums[left]] -= 1
+#                 sum_win -= nums[left]
+#                 left += 1
+#             ans = max(ans, sum_win)
+#         return ans
 
 
 
