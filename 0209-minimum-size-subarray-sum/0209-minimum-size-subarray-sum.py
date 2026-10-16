@@ -1,13 +1,62 @@
 class Solution:
-    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+    def minSubArrayLen(self, target: int, nums: list[int]):
         ans = float('inf')
         left = 0
-        count = 0 
+        count = 0
         for right in range(len(nums)):
             count += nums[right]
             while count >= target:
                 ans = min(ans, right - left + 1)
                 count -= nums[left]
                 left += 1
-        return ans if ans != float('inf') else 0               
+        return ans if ans != float('inf') else 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# class Solution:
+#     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+#         ans = float('inf')
+#         left = 0
+#         count = 0 
+#         for right in range(len(nums)):
+#             count += nums[right]
+#             while count >= target:
+#                 ans = min(ans, right - left + 1)
+#                 count -= nums[left]
+#                 left += 1
+#         return ans if ans != float('inf') else 0               
         
