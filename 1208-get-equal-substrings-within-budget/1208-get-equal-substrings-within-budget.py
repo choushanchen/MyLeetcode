@@ -1,15 +1,57 @@
 class Solution:
-    def equalSubstring(self, s:str, t:str, maxCost:int) ->int:
+    def equalSubstring(self, s:str, t:str,maxCost:int) -> int:
         ans = 0
+        count = 0
         left = 0
-        cost = 0
-        for right in range(len(s)):
-            cost += abs(ord(s[right]) - ord(t[right]))
-            while cost > maxCost:
-                cost -= abs(ord(s[left]) - ord(t[left]))
+        for right,ch in enumerate(s):
+            count += abs(ord(s[right]) - ord(t[right]))
+            while count > maxCost:
+                count -= abs(ord(s[left]) - ord(t[left]))
                 left += 1
             ans = max(ans, right - left + 1)
         return ans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# class Solution:
+#     def equalSubstring(self, s:str, t:str, maxCost:int) ->int:
+#         ans = 0
+#         left = 0
+#         cost = 0
+#         for right in range(len(s)):
+#             cost += abs(ord(s[right]) - ord(t[right]))
+#             while cost > maxCost:
+#                 cost -= abs(ord(s[left]) - ord(t[left]))
+#                 left += 1
+#             ans = max(ans, right - left + 1)
+#         return ans
 
 
 
