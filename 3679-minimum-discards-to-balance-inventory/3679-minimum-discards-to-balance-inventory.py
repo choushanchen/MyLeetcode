@@ -1,21 +1,74 @@
 from collections import Counter
 class Solution:
     def minArrivalsToDiscard(self, arrivals: List[int], w: int,m: int) -> int:
-        count = Counter()
-        n = len(arrivals)
+        left = 0
+        cnt = Counter()
+        discard = 0
+        n = len(arrivals) 
         kept = [False] * n
-        ans = 0
-        for i in range(n):
-            out = i - w
-            if out >= 0 and kept[out]:
-                count[arrivals[out]] -= 1
-            x = arrivals[i]
-            if count[x] < m:
-                count[x] += 1
-                kept[i] = True
+        for right in range(n):
+            if right >= w:
+                if kept[left]:
+                    cnt[arrivals[left]] -= 1
+                left += 1
+            r = arrivals[right]
+            if cnt[r] < m:
+                cnt[r] += 1
+                kept[right] = True
             else:
-                ans += 1
-        return ans
+                discard += 1
+        return discard
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from collections import Counter
+# class Solution:
+#     def minArrivalsToDiscard(self, arrivals: List[int], w: int,m: int) -> int:
+#         count = Counter()
+#         n = len(arrivals)
+#         kept = [False] * n
+#         ans = 0
+#         for i in range(n):
+#             out = i - w
+#             if out >= 0 and kept[out]:
+#                 count[arrivals[out]] -= 1
+#             x = arrivals[i]
+#             if count[x] < m:
+#                 count[x] += 1
+#                 kept[i] = True
+#             else:
+#                 ans += 1
+#         return ans
 
           
 # class Solution:
