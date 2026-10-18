@@ -13,9 +13,9 @@ class Solution:
             while s >= k:
                 ans = min(ans, right - left + 1)
                 l = nums[left]
-                cnt[l] -= 1
-                if cnt[l] == 0:
+                if cnt[l] == 1:
                     s -= l
+                cnt[l] -= 1
                 left += 1
         return ans if ans != float('inf') else -1
 
