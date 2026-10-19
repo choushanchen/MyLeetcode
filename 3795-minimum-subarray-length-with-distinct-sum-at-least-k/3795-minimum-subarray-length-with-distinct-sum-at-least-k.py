@@ -1,23 +1,75 @@
 from collections import Counter
 class Solution:
     def minLength(self, nums: List[int], k: int) -> int:
-        cnt = Counter()
         left = 0
+        ans = float("inf")
         s = 0
-        ans = float('inf')
+        count = Counter()
         for right in range(len(nums)):
-            r = nums[right]
-            cnt[r] += 1
-            if cnt[r] == 1:
-                s += r
+            count[nums[right]] += 1
+            if count[nums[right]] == 1:
+                s += nums[right]
             while s >= k:
                 ans = min(ans, right - left + 1)
-                l = nums[left]
-                if cnt[l] == 1:
-                    s -= l
-                cnt[l] -= 1
+                count[nums[left]] -= 1
+                if count[nums[left]] == 0:
+                    s -= nums[left]
                 left += 1
-        return ans if ans != float('inf') else -1
+        return ans if ans != float("inf") else -1
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# from collections import Counter
+# class Solution:
+#     def minLength(self, nums: List[int], k: int) -> int:
+#         cnt = Counter()
+#         left = 0
+#         s = 0
+#         ans = float('inf')
+#         for right in range(len(nums)):
+#             r = nums[right]
+#             cnt[r] += 1
+#             if cnt[r] == 1:
+#                 s += r
+#             while s >= k:
+#                 ans = min(ans, right - left + 1)
+#                 l = nums[left]
+#                 if cnt[l] == 1:
+#                     s -= l
+#                 cnt[l] -= 1
+#                 left += 1
+#         return ans if ans != float('inf') else -1
 
 # from collections import Counter
 # class Solution:
