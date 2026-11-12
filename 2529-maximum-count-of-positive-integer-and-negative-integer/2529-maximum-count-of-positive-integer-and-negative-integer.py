@@ -1,13 +1,15 @@
 class Solution:
     def maximumCount(self, nums: list[int]) -> int:
-        left, right = 0, len(nums)
-        zeros = sum(1 for x in nums if x == 0)
-        while left < right:
-            mid = (left + right) // 2
-            if nums[mid] < 0:
-                left = mid + 1
-            else:
-                right = mid
-        return left if left > len(nums) - left - zeros else len(nums) - left - zeros
-
+        def lower_bound(x: int):
+            left, right = 0, len(nums)
+            while left < right:
+                mid = (left + right) // 2
+                if nums[mid] < x:
+                    left = mid + 1
+                else:
+                    right = mid
+            return left 
+        neg = lower_bound(0)
+        pos = len(nums) - lower_bound(1)
+        return max(neg, pos)
         
