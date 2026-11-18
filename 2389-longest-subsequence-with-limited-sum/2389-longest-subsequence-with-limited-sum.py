@@ -3,7 +3,7 @@ class Solution:
         left, right = 0, len(nums)
         while left < right:
             mid =  (left + right) // 2
-            if nums[mid] <= target:
+            if nums[mid] < target:
                 left = mid + 1
             else:
                 right = mid
@@ -19,7 +19,7 @@ class Solution:
             s += x
             pre.append(s) 
         for q in queries:
-            ans.append(self.lowerBound(pre, q))
+            ans.append(self.lowerBound(pre, q + 1))
         return ans
         
 
