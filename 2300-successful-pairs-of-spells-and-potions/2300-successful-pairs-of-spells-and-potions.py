@@ -16,7 +16,6 @@ class Solution:
         for s in spells:
             target = (success + s - 1) // s
             i = self.lowerBound(potions, target)
-            print(i)
             ans.append(n - i)
         return ans
 
