@@ -1,5 +1,5 @@
 class Solution:
-    def lowerBound(self, nums: list[int], target) -> int:
+    def lowerBound(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums)
         while left < right:
             mid = (left + right) // 2
@@ -11,72 +11,13 @@ class Solution:
 
     def successfulPairs(self, spells: list[int], potions: list[int], success: int) -> list[int]:
         ans = []
-        potions.sort()
-        p = 0
         n = len(potions)
+        potions.sort()
         for s in spells:
-            p = (success+s-1)//s
-            i = self.lowerBound(potions, p)
+            d = (success + s - 1) // s
+            i = self.lowerBound(potions, d)
             ans.append(n - i)
         return ans
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class Solution:        
-#     def lowerBound(self, nums: list[int], target) -> int:
-#         left, right = 0, len(nums)
-#         while left < right:
-#             mid = (left + right) // 2
-#             if nums[mid] < target:
-#                 left = mid + 1
-#             else:
-#                 right = mid
-#         return left
-
-#     def successfulPairs(self, spells: list[int], potions: list[int], success: int) -> list[int]:
-#         ans = []
-#         n = len(potions)
-#         potions.sort()
-#         for s in spells:
-#             target = (success + s - 1) // s
-#             i = self.lowerBound(potions, target)
-#             ans.append(n - i)
-#         return ans
-
-        
         
         
