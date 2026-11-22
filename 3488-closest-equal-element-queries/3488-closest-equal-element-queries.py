@@ -1,10 +1,10 @@
 from collections import defaultdict
 
 class Solution:
-    def lowerBound(self, nums: List[int], target)-> int:
+    def lowerBound(self, nums: List[int], target: int) -> int:
         left, right = 0, len(nums)
         while left < right:
-            mid = (left+right)//2
+            mid = (left+right) // 2
             if nums[mid] < target:
                 left = mid + 1
             else:
@@ -14,9 +14,9 @@ class Solution:
     def solveQueries(self, nums: List[int], queries: List[int]) -> List[int]:
         n = len(nums)
         pos = defaultdict(list)
-        for i,x in enumerate(nums):
+        for i, x in enumerate(nums):
             pos[x].append(i)
-        ans = []
+        ans = [] 
         for q in queries:
             p = pos[nums[q]]
             if len(p) == 1:
@@ -26,7 +26,8 @@ class Solution:
             best = n
             for j in (p[k - 1], p[(k + 1) % len(p)]):
                 d = abs(q - j)
-                best = min(best,d, n-d)
+                best = min(best, d, n - d)
             ans.append(best)
         return ans
+
         
