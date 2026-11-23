@@ -1,11 +1,10 @@
 from collections import defaultdict
 
 class RangeFreqQuery:
-    
-    def lowerBound(self, nums: list[int], target: int) -> int :
-        right, left = len(nums), 0
+    def lowerBound(self, nums: list[int], target):
+        left, right = 0, len(nums)
         while left < right:
-            mid = (right + left)//2
+            mid = (left + right) // 2
             if nums[mid] < target:
                 left = mid + 1
             else:
@@ -14,9 +13,8 @@ class RangeFreqQuery:
 
     def __init__(self, arr: list[int]):
         self.pos = defaultdict(list)
-        for i, x in enumerate(arr):
+        for i,x in enumerate(arr):
             self.pos[x].append(i)
-        
 
     def query(self, left: int, right: int, value: int) -> int:
         p = self.pos[value]
