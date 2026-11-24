@@ -16,5 +16,4 @@ class Solution:
             start = self.lowerBound(nums, lower - nums[i], i + 1)
             end = self.lowerBound(nums, upper - nums[i] + 1, start)
             ans += end - start 
-            print(start, end, ans)
         return ans
