@@ -18,7 +18,6 @@ class RangeFreqQuery:
             self.pos[x].append(i)
         
     def query(self, left: int, right: int, value: int) -> int:
-        ans = []
         p = self.pos[value]
         start = self.lowerBound(p, left)
         end = self.lowerBound(p, right + 1)
