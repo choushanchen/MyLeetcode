@@ -1,5 +1,6 @@
 from collections import defaultdict
 class Solution:
+
     def lowerBound(self, nums: list[int], target: int) -> int:
         left, right = 0, len(nums)
         while left < right:
@@ -15,18 +16,18 @@ class Solution:
         for i, x in enumerate(nums):
             pos[x].append(i)
         ans = []
-         
         for q in queries:
             p = pos[nums[q]]
             if len(p) == 1:
                 ans.append(-1)
                 continue
-            x = self.lowerBound(p, q)
-            n = len(nums)
-            for i in ((x - 1), (x + 1) % len(p)):
-                d = abs(p[x] - p[i])
-                n = min(d, len(nums) - d, n)
-            ans.append(n) 
+            x = self.lowerBound(p, q) 
+            best = len(nums)
+            for j in ((x - 1), (x + 1) % len(p)):
+                d = abs(p[j] - p[x])
+                best = min(best, d, len(nums) - d)
+            ans.append(best)
         return ans
-                
-
+            
+            
+        
